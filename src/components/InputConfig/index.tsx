@@ -4,8 +4,8 @@ import styles from "./styles.module.scss";
 
 export function InputConfig() {
   const { tag, handleChangePositionXBrand } = useContext(TagContext);
-  const handleChange = (type: string) => {
-    handleChangePositionXBrand(type);
+  const handleChange = (type: string, element: string) => {
+    handleChangePositionXBrand(type, "brand");
   };
 
   return (
@@ -13,11 +13,14 @@ export function InputConfig() {
       <input className={styles.InputText} placeholder="Nome da marca" />
       <div className={styles.ViewButtons}>
         <div className={styles.ButtonsSizeView}>
-          <button onClick={() => handleChange("add")} className={styles.Button}>
+          <button
+            onClick={() => handleChange("add", "Brand")}
+            className={styles.Button}
+          >
             +
           </button>
           <button
-            onClick={() => handleChange("subtract")}
+            onClick={() => handleChange("subtract", "Brand")}
             className={styles.Button}
           >
             -

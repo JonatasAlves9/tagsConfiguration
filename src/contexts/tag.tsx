@@ -19,7 +19,7 @@ export type typeModel = {
 
 export type TagContextData = {
   tag: TagModel;
-  handleChangePositionXBrand: (operation: string) => void;
+  handleChangePositionXBrand: (operation: string, element: string) => void;
 };
 
 export type TagModel = {
@@ -108,14 +108,13 @@ export function TagProvider({ children }: TagProviderProps) {
     },
   });
 
-  function handleChangePositionXBrand(operation: string) {
-    console.log(operation);
+  function handleChangePositionXBrand(operation: string, element: string) {
     if (operation === "add") {
       const x = (parseInt(tag.brand.positionX) + 1).toString();
       setTag({
         ...tag,
-        brand: {
-          ...tag.brand,
+        [element]: {
+          ...tag[element],
           positionX: x.toString(),
         },
       });
@@ -123,8 +122,8 @@ export function TagProvider({ children }: TagProviderProps) {
       const x = (parseInt(tag.brand.positionX) - 1).toString();
       setTag({
         ...tag,
-        brand: {
-          ...tag.brand,
+        [element]: {
+          ...tag[element],
           positionX: x.toString(),
         },
       });
