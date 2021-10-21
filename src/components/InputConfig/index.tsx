@@ -3,8 +3,12 @@ import { TagContext } from "../../contexts/tag";
 import styles from "./styles.module.scss";
 
 export function InputConfig() {
-  const { tag, handleChangePosition, handleChangePositionY } =
-    useContext(TagContext);
+  const {
+    tag,
+    handleChangePosition,
+    handleChangePositionY,
+    changeTextElement,
+  } = useContext(TagContext);
   const handleChange = (type: string, element: string, direction: string) => {
     if (direction === "x") {
       handleChangePosition(type, element);
@@ -16,7 +20,13 @@ export function InputConfig() {
 
   return (
     <div className={styles.InputViewWrapper}>
-      <input className={styles.InputText} placeholder="Nome da marca" />
+      <input
+        className={styles.InputText}
+        placeholder={tag.brand.name}
+        onChange={(event) =>
+          changeTextElement("brand", event.currentTarget.value)
+        }
+      />
       <div className={styles.ViewButtons}>
         <div className={styles.ButtonsSizeView}>
           <button

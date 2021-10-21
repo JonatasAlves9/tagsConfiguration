@@ -24,7 +24,7 @@ export function TemplateView() {
           fontSize: `${tag.brand.size}px`,
         }}
       >
-        Nome da marca
+        {tag.brand.name}
       </h1>
     </div>
   );

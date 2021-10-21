@@ -21,6 +21,7 @@ export type TagContextData = {
   tag: TagModel;
   handleChangePosition: (operation: string, element: string) => void;
   handleChangePositionY: (operation: string, element: string) => void;
+  changeTextElement: (element: string, value: string) => void;
 };
 
 export type TagModel = {
@@ -109,6 +110,17 @@ export function TagProvider({ children }: TagProviderProps) {
     },
   });
 
+  function changeTextElement(element: string, value: string) {
+    console.log(tag.brand.name);
+    setTag({
+      ...tag,
+      [element]: {
+        ...tag[element],
+        name: value,
+      },
+    });
+  }
+
   function handleChangePosition(operation: string, element: string) {
     if (operation === "add") {
       const x = (parseInt(tag.brand.positionX) + 2).toString();
@@ -156,7 +168,12 @@ export function TagProvider({ children }: TagProviderProps) {
 
   return (
     <TagContext.Provider
-      value={{ tag, handleChangePosition, handleChangePositionY }}
+      value={{
+        tag,
+        handleChangePosition,
+        handleChangePositionY,
+        changeTextElement,
+      }}
     >
       {children}
     </TagContext.Provider>
