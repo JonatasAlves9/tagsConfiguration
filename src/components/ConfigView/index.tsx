@@ -15,7 +15,8 @@ export function ConfigView() {
         personalizada e praticamente ver a simulação gráfica em tempo real!
       </span>
 
-      <InputConfig />
+      <InputConfig element="brand" />
+      <InputConfig element="secondText" />
     </div>
   );
 }

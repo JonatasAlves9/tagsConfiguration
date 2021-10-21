@@ -81,7 +81,7 @@ export function TagProvider({ children }: TagProviderProps) {
       size: "24",
       font_family: "default",
       positionX: "12",
-      positionY: "130",
+      positionY: "180",
       visible: true,
     },
     secondText: {
@@ -89,8 +89,8 @@ export function TagProvider({ children }: TagProviderProps) {
       color: "#fff",
       size: "24",
       font_family: "default",
-      positionX: "12",
-      positionY: "12",
+      positionX: "50",
+      positionY: "180",
       visible: true,
     },
     textMade: {
@@ -123,7 +123,7 @@ export function TagProvider({ children }: TagProviderProps) {
 
   function handleChangePosition(operation: string, element: string) {
     if (operation === "add") {
-      const x = (parseInt(tag.brand.positionX) + 2).toString();
+      const x = (parseInt(tag[element].positionX) + 2).toString();
       setTag({
         ...tag,
         [element]: {
@@ -132,7 +132,7 @@ export function TagProvider({ children }: TagProviderProps) {
         },
       });
     } else if (operation === "subtract") {
-      const x = (parseInt(tag.brand.positionX) - 2).toString();
+      const x = (parseInt(tag[element].positionX) - 2).toString();
       setTag({
         ...tag,
         [element]: {
@@ -146,7 +146,7 @@ export function TagProvider({ children }: TagProviderProps) {
   function handleChangePositionY(operation: string, element: string) {
     console.log(tag.brand.positionY);
     if (operation === "add") {
-      const y = (parseInt(tag.brand.positionY) + 2).toString();
+      const y = (parseInt(tag[element].positionY) + 2).toString();
       setTag({
         ...tag,
         [element]: {
@@ -155,7 +155,7 @@ export function TagProvider({ children }: TagProviderProps) {
         },
       });
     } else if (operation === "subtract") {
-      const y = (parseInt(tag.brand.positionY) - 2).toString();
+      const y = (parseInt(tag[element].positionY) - 2).toString();
       setTag({
         ...tag,
         [element]: {

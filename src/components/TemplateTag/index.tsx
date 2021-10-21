@@ -26,6 +26,18 @@ export function TemplateView() {
       >
         {tag.brand.name}
       </h1>
+
+      <span
+        style={{
+          position: "absolute",
+          marginTop: `${tag.secondText.positionX}px`,
+          marginLeft: `${tag.secondText.positionY}px`,
+          color: tag.secondText.color,
+          fontSize: `${tag.secondText.size}px`,
+        }}
+      >
+        {tag.secondText.name}
+      </span>
     </div>
   );
 }

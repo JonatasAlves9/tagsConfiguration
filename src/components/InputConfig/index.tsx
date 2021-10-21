@@ -2,7 +2,11 @@ import { useContext } from "react";
 import { TagContext } from "../../contexts/tag";
 import styles from "./styles.module.scss";
 
-export function InputConfig() {
+type Props = {
+  element: string;
+};
+
+export function InputConfig({ element }: Props) {
   const {
     tag,
     handleChangePosition,
@@ -10,6 +14,7 @@ export function InputConfig() {
     changeTextElement,
   } = useContext(TagContext);
   const handleChange = (type: string, element: string, direction: string) => {
+    console.log(type, element, direction);
     if (direction === "x") {
       handleChangePosition(type, element);
     }
@@ -22,21 +27,21 @@ export function InputConfig() {
     <div className={styles.InputViewWrapper}>
       <input
         className={styles.InputText}
-        placeholder={tag.brand.name}
+        placeholder={tag[element].name}
         onChange={(event) =>
-          changeTextElement("brand", event.currentTarget.value)
+          changeTextElement(element, event.currentTarget.value)
         }
       />
       <div className={styles.ViewButtons}>
         <div className={styles.ButtonsSizeView}>
           <button
-            onClick={() => handleChange("add", "brand", "x")}
+            onClick={() => handleChange("add", element, "x")}
             className={styles.Button}
           >
             +
           </button>
           <button
-            onClick={() => handleChange("subtract", "brand", "x")}
+            onClick={() => handleChange("subtract", element, "x")}
             className={styles.Button}
           >
             -
@@ -44,13 +49,13 @@ export function InputConfig() {
         </div>
         <div className={styles.ButtonsSizeView}>
           <button
-            onClick={() => handleChange("add", "brand", "y")}
+            onClick={() => handleChange("add", element, "y")}
             className={styles.Button}
           >
             +
           </button>
           <button
-            onClick={() => handleChange("subtract", "brand", "y")}
+            onClick={() => handleChange("subtract", element, "y")}
             className={styles.Button}
           >
             -
