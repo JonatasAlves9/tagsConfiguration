@@ -72,7 +72,7 @@ export function TagProvider({ children }: TagProviderProps) {
       width: 500,
       height: 200,
       borderRadius: 20,
-      background: "#121214",
+      background: "#242463",
       color: "#fff",
     },
     brand: {
@@ -81,16 +81,16 @@ export function TagProvider({ children }: TagProviderProps) {
       size: "24",
       font_family: "default",
       positionX: "12",
-      positionY: "180",
+      positionY: "220",
       visible: true,
     },
     secondText: {
       name: "Slogan Adasi",
       color: "#fff",
-      size: "24",
+      size: "20",
       font_family: "default",
       positionX: "50",
-      positionY: "180",
+      positionY: "195",
       visible: true,
     },
     textMade: {
