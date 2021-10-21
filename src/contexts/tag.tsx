@@ -19,9 +19,9 @@ export type typeModel = {
 
 export type TagContextData = {
   tag: TagModel;
-  handleChangePosition: (operation: string, element: string) => void;
-  handleChangePositionY: (operation: string, element: string) => void;
-  changeTextElement: (element: string, value: string) => void;
+  handleChangePosition: (operation: string, element: 'brand' | 'secondText' | 'textMade' | 'logo') => void;
+  handleChangePositionY: (operation: string, element: 'brand' | 'secondText' | 'textMade' | 'logo') => void;
+  changeTextElement: (element: 'brand' | 'secondText' | 'textMade', value: string) => void;
 };
 
 export type TagModel = {
@@ -110,56 +110,58 @@ export function TagProvider({ children }: TagProviderProps) {
     },
   });
 
-  function changeTextElement(element: string, value: string) {
-    console.log(tag.brand.name);
+  function changeTextElement(element: 'brand' | 'secondText' | 'textMade', value: string) {
+    const elementParams = tag[element];
     setTag({
       ...tag,
       [element]: {
-        ...tag[element],
+        ...elementParams,
         name: value,
       },
     });
   }
 
-  function handleChangePosition(operation: string, element: string) {
+  function handleChangePosition(operation: string, element: 'brand' | 'secondText' | 'textMade' | 'logo') {
+    const elementParams = tag[element];
     if (operation === "add") {
-      const x = (parseInt(tag[element].positionX) + 2).toString();
+      const x = (parseInt(elementParams.positionX) + 2).toString();
       setTag({
         ...tag,
         [element]: {
-          ...tag[element],
+          ...elementParams,
           positionX: x.toString(),
         },
       });
     } else if (operation === "subtract") {
-      const x = (parseInt(tag[element].positionX) - 2).toString();
+      const x = (parseInt(elementParams.positionX) - 2).toString();
       setTag({
         ...tag,
         [element]: {
-          ...tag[element],
+          ...elementParams,
           positionX: x.toString(),
         },
       });
     }
   }
 
-  function handleChangePositionY(operation: string, element: string) {
+  function handleChangePositionY(operation: string, element: 'brand' | 'secondText' | 'textMade' | 'logo') {
     console.log(tag.brand.positionY);
+    const elementParams = tag[element];
     if (operation === "add") {
-      const y = (parseInt(tag[element].positionY) + 2).toString();
+      const y = (parseInt(elementParams.positionY) + 2).toString();
       setTag({
         ...tag,
         [element]: {
-          ...tag[element],
+          ...elementParams,
           positionY: y.toString(),
         },
       });
     } else if (operation === "subtract") {
-      const y = (parseInt(tag[element].positionY) - 2).toString();
+      const y = (parseInt(elementParams.positionY) - 2).toString();
       setTag({
         ...tag,
         [element]: {
-          ...tag[element],
+          ...elementParams,
           positionY: y.toString(),
         },
       });
