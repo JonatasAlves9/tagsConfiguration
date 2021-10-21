@@ -19,7 +19,8 @@ export type typeModel = {
 
 export type TagContextData = {
   tag: TagModel;
-  handleChangePositionXBrand: (operation: string, element: string) => void;
+  handleChangePosition: (operation: string, element: string) => void;
+  handleChangePositionY: (operation: string, element: string) => void;
 };
 
 export type TagModel = {
@@ -108,9 +109,9 @@ export function TagProvider({ children }: TagProviderProps) {
     },
   });
 
-  function handleChangePositionXBrand(operation: string, element: string) {
+  function handleChangePosition(operation: string, element: string) {
     if (operation === "add") {
-      const x = (parseInt(tag.brand.positionX) + 1).toString();
+      const x = (parseInt(tag.brand.positionX) + 2).toString();
       setTag({
         ...tag,
         [element]: {
@@ -119,7 +120,7 @@ export function TagProvider({ children }: TagProviderProps) {
         },
       });
     } else if (operation === "subtract") {
-      const x = (parseInt(tag.brand.positionX) - 1).toString();
+      const x = (parseInt(tag.brand.positionX) - 2).toString();
       setTag({
         ...tag,
         [element]: {
@@ -130,8 +131,33 @@ export function TagProvider({ children }: TagProviderProps) {
     }
   }
 
+  function handleChangePositionY(operation: string, element: string) {
+    console.log(tag.brand.positionY);
+    if (operation === "add") {
+      const y = (parseInt(tag.brand.positionY) + 2).toString();
+      setTag({
+        ...tag,
+        [element]: {
+          ...tag[element],
+          positionY: y.toString(),
+        },
+      });
+    } else if (operation === "subtract") {
+      const y = (parseInt(tag.brand.positionY) - 2).toString();
+      setTag({
+        ...tag,
+        [element]: {
+          ...tag[element],
+          positionY: y.toString(),
+        },
+      });
+    }
+  }
+
   return (
-    <TagContext.Provider value={{ tag, handleChangePositionXBrand }}>
+    <TagContext.Provider
+      value={{ tag, handleChangePosition, handleChangePositionY }}
+    >
       {children}
     </TagContext.Provider>
   );
