@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { TagContext } from "../../contexts/tag";
 import { InputConfig } from "../InputConfig";
 
 import styles from "./styles.module.scss";
@@ -14,8 +15,6 @@ export function ConfigView() {
         personalizada e praticamente ver a simulação gráfica em tempo real!
       </span>
 
-      <InputConfig />
-      <InputConfig />
       <InputConfig />
     </div>
   );
